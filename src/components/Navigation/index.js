@@ -1,7 +1,7 @@
 import React from "react"
 import LoginButton from "../LoginButton"
 
-export default function Sidebar() {
+export default function Navigation() {
 	return (
 		<div
 			style={{
@@ -12,7 +12,7 @@ export default function Sidebar() {
 			}}
 		>
 			<div className="menu" style={{ padding: "20px" }}>
-				Home My Dashboard My Profile
+				<a href="/">Home</a> My Dashboard My Profile
 			</div>
 			<div style={{ display: "flex", padding: "20px" }}>
 				<LoginButton />
