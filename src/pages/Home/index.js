@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
-import { Jumbotron, CardColumns, Container } from "react-bootstrap"
+import { Container, CardDeck, Card } from "react-bootstrap"
 import { fetchCars } from "../../store/cars/actions"
 import { selectCars } from "../../store/cars/selectors"
 import Car from "../../components/Car"
@@ -9,8 +9,6 @@ import Car from "../../components/Car"
 export default function Cars() {
 	const dispatch = useDispatch()
 	const cars = useSelector(selectCars)
-	console.log(cars)
-	// console.log("Artworks:", artworks)
 
 	useEffect(() => {
 		dispatch(fetchCars())
@@ -18,20 +16,31 @@ export default function Cars() {
 
 	return (
 		<>
-			<h1>Cars for rent</h1>
 			<Container>
-				<CardColumns style={{ display: "block", maxWidth: "1000px" }}>
+				<h1>Cars for rent</h1>
+				<CardDeck style={{ display: "block" }}>
 					{cars.map((car) => {
 						return (
-							<Car
-								key={car.id}
-								id={car.id}
-								brand={car.brand}
-								imageUrl={car.imageUrl}
-							/>
+							<Card
+								style={{
+									display: "inline-block",
+									width: "500px",
+									marginBottom: "20px",
+								}}
+							>
+								<Car
+									key={car.id}
+									id={car.id}
+									brand={car.brand}
+									model={car.model}
+									gearbox={car.gearbox}
+									bhp={car.bhp}
+									imageUrl={car.imageUrl}
+								/>
+							</Card>
 						)
 					})}
-				</CardColumns>
+				</CardDeck>
 			</Container>
 		</>
 	)
