@@ -1,22 +1,49 @@
 import React from "react"
-import LoginButton from "../LoginButton"
+import Nav from "react-bootstrap/Nav"
+import Navbar from "react-bootstrap/Navbar"
+import NavbarItem from "./NavbarItem"
+import { NavLink } from "react-router-dom"
+import { useSelector } from "react-redux"
+
+import LoginButton from "./LoginButton"
+import LogoutButton from "./LogoutButton"
+
+import { selectVendorName } from "../../store/vendor/selectors"
+import { selectRacerToken } from "../../store/racer/selectors"
+import { selectVendorToken } from "../../store/vendor/selectors"
 
 export default function Navigation() {
+	const tokenRacer = useSelector(selectRacerToken)
+	const tokenVendor = useSelector(selectVendorToken)
+
+	const menuItems = () => {
+		if (tokenVendor) {
+			return <NavbarItem path="/mydashboard" linkText="My Dashboard" />
+		} else if (tokenRacer) {
+			return <NavbarItem path="/myprofile" linkText="My Profile" />
+		} else {
+			return null
+		}
+	}
+
+	const loginLogoutControls =
+		tokenRacer || tokenVendor ? <LogoutButton /> : <LoginButton />
+
 	return (
-		<div
-			style={{
-				width: "100%",
-				borderBottom: "1px solid #000",
-				display: "flex",
-				justifyContent: "space-between",
-			}}
-		>
-			<div className="menu" style={{ padding: "20px" }}>
-				<a href="/">Home</a> My Dashboard My Profile
-			</div>
-			<div style={{ display: "flex", padding: "20px" }}>
-				<LoginButton />
-			</div>
-		</div>
+		<>
+			<Navbar bg="light" expand="lg">
+				<Navbar.Brand as={NavLink} to="/">
+					<p>Racing Valley</p>
+				</Navbar.Brand>
+				<Navbar.Toggle aria-controls="basic-navbar-nav" />
+				<Navbar.Collapse id="basic-navbar-nav">
+					<Nav style={{ width: "100%" }} fill>
+						<NavbarItem path="/" linkText="Home" />
+						{menuItems()}
+						{loginLogoutControls}
+					</Nav>
+				</Navbar.Collapse>
+			</Navbar>
+		</>
 	)
 }
