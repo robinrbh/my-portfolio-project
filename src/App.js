@@ -21,10 +21,10 @@ function App() {
 	const tokenRacer = useSelector(selectRacerToken)
 	const tokenVendor = useSelector(selectVendorToken)
 	const Component = tokenRacer
-		? RacerProfile 
+		? RacerProfile
 		: tokenVendor
-			? VendorDashboard 
-			: null
+		? VendorDashboard
+		: null
 
 	return (
 		<div>

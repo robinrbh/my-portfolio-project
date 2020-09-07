@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { fetchVendorById } from "../../store/vendorsDetails/actions"
-import { selectVendor } from "../../store/vendorsDetails/selectors"
+import { selectVendors } from "../../store/vendorsDetails/selectors"
 import { useParams } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { Container, Row, Col, CardDeck, Card } from "react-bootstrap"
@@ -10,8 +10,7 @@ export default function VendorDetails() {
 	const { id } = useParams()
 	const dispatch = useDispatch()
 
-	const vendor = useSelector(selectVendor)
-
+	const vendor = useSelector(selectVendors)
 
 	useEffect(() => {
 		dispatch(fetchVendorById(id))

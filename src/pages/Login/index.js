@@ -17,15 +17,12 @@ export default function SignUp() {
 	const history = useHistory()
 	const dispatch = useDispatch()
 
-	const id = useParams()
-
 	const [status, setStatus] = useState(1)
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
 
 	const racerId = useSelector(selectRacerId)
 	const vendorId = useSelector(selectVendorId)
-
 
 	useEffect(() => {
 		if (racerId !== null) {
@@ -43,7 +40,7 @@ export default function SignUp() {
 
 		if (status === "1") {
 			dispatch(loginRacer(email, password, status))
-		} else { 
+		} else {
 			dispatch(loginVendor(email, password, status))
 		}
 	}

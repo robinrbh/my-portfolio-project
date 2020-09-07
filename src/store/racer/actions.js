@@ -59,6 +59,14 @@ export const loginRacer = (email, password, isRacer) => {
 	}
 }
 
+export const fetchRacers = () => {
+	return async (dispatch, getState) => {
+		const response = await axios.get(`${apiUrl}/racers`)
+
+		dispatch(racerDetailsFetched(response.data))
+	}
+}
+
 export const fetchRacerById = (id) => {
 	return async (dispatch, getState) => {
 		const response = await axios.get(`${apiUrl}/racers/${id}`)

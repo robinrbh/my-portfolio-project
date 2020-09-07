@@ -4,9 +4,9 @@ import Axios from "axios"
 export const FETCH_VENDORS_SUCCESS = "FETCH_VENDORS_SUCCES"
 export const VENDORDETAILS_FETCHED = "VENDORDETAILS_FETCHED"
 
-export const fetchVendorsSuccess = (vendor) => ({
+export const fetchVendorsSuccess = (vendors) => ({
 	type: FETCH_VENDORS_SUCCESS,
-	payload: vendor,
+	payload: vendors,
 })
 
 export const vendorDetailsFetched = (vendor) => ({
@@ -14,7 +14,7 @@ export const vendorDetailsFetched = (vendor) => ({
 	payload: vendor,
 })
 
-export const fetchVendor = () => {
+export const fetchVendors = () => {
 	return async (dispatch, getState) => {
 		const response = await Axios.get(`${apiUrl}/vendors`)
 		console.log("WHAT IS VENDORS (/VENDORSDETAILS)", response.data)

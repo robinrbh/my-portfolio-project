@@ -4,20 +4,20 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link, useParams } from "react-router-dom"
 import { fetchCarById } from "../../store/carDetails/actions"
 import { selectCarDetails } from "../../store/carDetails/selectors"
-import { fetchVendor } from "../../store/vendorsDetails/actions"
-import { selectVendor } from "../../store/vendorsDetails/selectors"
+import { fetchVendors } from "../../store/vendorsDetails/actions"
+import { selectVendors } from "../../store/vendorsDetails/selectors"
 // import { selectToken, selectUser } from "../../store/user/selectors"
 
 export default function CarDetails(props) {
 	const { id } = useParams()
 	const dispatch = useDispatch()
 	const car = useSelector(selectCarDetails)
-	const vendors = useSelector(selectVendor)
+	const vendors = useSelector(selectVendors)
 	console.log("car", car)
 
 	useEffect(() => {
 		dispatch(fetchCarById(id))
-		dispatch(fetchVendor())
+		dispatch(fetchVendors())
 	}, [dispatch, id])
 
 	return (
@@ -32,6 +32,9 @@ export default function CarDetails(props) {
 							{car.brand} {car.model}
 						</h3>
 						<p>{car.description}</p>
+						<Link>
+							<Button>Book this car!</Button>
+						</Link>
 					</Col>
 					<Col>
 						<Card>
