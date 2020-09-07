@@ -1,18 +1,18 @@
 import React from "react"
-import { Switch, Route } from "react-router-dom"
-import { selectAppLoading } from "./store/appState/selectors"
-
-import Home from "./pages/Home"
-import Navigation from "./components/Navigation"
-import Loading from "./components/Loading"
 import { useSelector } from "react-redux"
+import { Route, Switch } from "react-router-dom"
+import Loading from "./components/Loading"
 import MessageBox from "./components/MessageBox"
-import Login from "./pages/Login"
-import Signup from "./pages/Signup"
+import Navigation from "./components/Navigation"
 import CarDetails from "./pages/CarDetails"
-import VendorDetails from "./pages/VendorDetails"
-import VendorDashboard from "./pages/Vendor/VendorDashboard"
+import BookACar from "./components/Car/BookACar"
+import Home from "./pages/Home"
+import Login from "./pages/Login"
 import RacerProfile from "./pages/Racer/RacerDashboard"
+import Signup from "./pages/Signup"
+import VendorDashboard from "./pages/Vendor/VendorDashboard"
+import VendorDetails from "./pages/VendorDetails"
+import { selectAppLoading } from "./store/appState/selectors"
 import { selectRacerToken } from "./store/racer/selectors"
 import { selectVendorToken } from "./store/vendor/selectors"
 
@@ -38,6 +38,7 @@ function App() {
 				<Switch>
 					<Route exact path="/" component={Home} />
 					<Route path="/cars/:id" component={CarDetails} />
+					<Route path="/cars/:id/book" component={BookACar} />
 					<Route path="/vendors/:id" component={VendorDetails} />
 					<Route path="/userdashboard" component={Component} />
 					<Route path="/login" component={Login} />
