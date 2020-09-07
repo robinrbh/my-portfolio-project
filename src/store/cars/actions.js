@@ -9,23 +9,10 @@ export const fetchCarsSuccess = (cars) => ({
 	payload: cars,
 })
 
-export const fetchVendorsSuccess = (vendors) => ({
-	type: FETCH_VENDORS_SUCCESS,
-	payload: vendors,
-})
-
 export const fetchCars = () => {
 	return async (dispatch, getState) => {
 		const response = await Axios.get(`${apiUrl}/cars`)
 
 		dispatch(fetchCarsSuccess(response.data))
-	}
-}
-
-export const fetchVendors = () => {
-	return async (dispatch, getState) => {
-		const response = await Axios.get(`${apiUrl}/cars/vendors`)
-
-		dispatch(fetchVendorsSuccess(response.data))
 	}
 }

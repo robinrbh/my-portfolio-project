@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Nav from "react-bootstrap/Nav"
 import Navbar from "react-bootstrap/Navbar"
 import NavbarItem from "./NavbarItem"
@@ -9,22 +9,35 @@ import LoginButton from "./LoginButton"
 import LogoutButton from "./LogoutButton"
 
 import { selectVendorName } from "../../store/vendor/selectors"
+import { selectRacerName } from "../../store/racer/selectors"
 import { selectRacerToken } from "../../store/racer/selectors"
 import { selectVendorToken } from "../../store/vendor/selectors"
+import { getRacerWithStoredToken } from "../../store/racer/actions"
+import { useDispatch } from "react-redux"
+import { getVendorWithStoredToken } from "../../store/vendor/actions"
 
 export default function Navigation() {
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		dispatch(getRacerWithStoredToken())
+		dispatch(getVendorWithStoredToken())
+	}, [dispatch])
+
 	const tokenRacer = useSelector(selectRacerToken)
 	const tokenVendor = useSelector(selectVendorToken)
 
-	const menuItems = () => {
-		if (tokenVendor) {
-			return <NavbarItem path="/mydashboard" linkText="My Dashboard" />
-		} else if (tokenRacer) {
-			return <NavbarItem path="/myprofile" linkText="My Profile" />
-		} else {
-			return null
-		}
-	}
+	const linkText = tokenRacer
+		? "My Profile"
+		: tokenVendor
+		? "My Dashboard"
+		: null
+
+	const item = linkText && (
+		<>
+			<NavbarItem path="/userdashboard" linkText={linkText} />
+		</>
+	)
 
 	const loginLogoutControls =
 		tokenRacer || tokenVendor ? <LogoutButton /> : <LoginButton />
@@ -39,7 +52,7 @@ export default function Navigation() {
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav style={{ width: "100%" }} fill>
 						<NavbarItem path="/" linkText="Home" />
-						{menuItems()}
+						{item}
 						{loginLogoutControls}
 					</Nav>
 				</Navbar.Collapse>

@@ -1,6 +1,6 @@
 import { FETCH_VENDORS_SUCCESS, VENDORDETAILS_FETCHED } from "./actions"
 
-const initialState = []
+const initialState = {}
 
 export default (state = initialState, action) => {
 	switch (action.type) {

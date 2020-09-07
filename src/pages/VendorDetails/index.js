@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { fetchVendorById } from "../../store/vendorsDetails/actions"
-import { selectVendorDetails } from "../../store/vendorsDetails/selectors"
+import { selectVendors } from "../../store/vendorsDetails/selectors"
 import { useParams } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { Container, Row, Col, CardDeck, Card } from "react-bootstrap"
@@ -10,8 +10,9 @@ export default function VendorDetails() {
 	const { id } = useParams()
 	const dispatch = useDispatch()
 
-	const vendor = useSelector(selectVendorDetails)
-	console.log("vendor", vendor)
+	const vendor = useSelector(selectVendors)
+
+	console.log("ratings", vendor.ratings)
 
 	useEffect(() => {
 		dispatch(fetchVendorById(id))
@@ -25,12 +26,12 @@ export default function VendorDetails() {
 						<img src={vendor.imageUrl} style={{ width: "150px" }} />
 					</Col>
 					<Col sm={10}>
-						<h3>{vendor.businessName}</h3>
+						<h3>{vendor.name}</h3>
 						<p>{vendor.description}</p>
 					</Col>
 				</Row>
 				<Row>
-					<h3>Cars for rent @ {vendor.businessName}</h3>
+					<h3>Cars for rent @ {vendor.name}</h3>
 				</Row>
 				<Row>
 					<CardDeck style={{ display: "block" }}>
@@ -59,14 +60,23 @@ export default function VendorDetails() {
 							  })}
 					</CardDeck>
 				</Row>
+				{/* <Row>
+					<h4>Reviews</h4>
+				</Row>
 				<Row>
-					Reviews
 					{!vendor.ratings
 						? "Loading..."
 						: vendor.ratings.map((rating) => {
-								return "Hello"
+								return (
+									<Card>
+										<Card.Body>
+											<h4>{rating.rating}/5</h4>
+											<p>{rating.comment}</p>
+										</Card.Body>
+									</Card>
+								)
 						  })}
-				</Row>
+				</Row> */}
 			</Container>
 		</>
 	)

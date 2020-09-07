@@ -1,5 +1,7 @@
-export const selectVendorName = (state) => state.vendor.businessName
+export const selectVendorName = (state) => state.vendor.name
 
 export const selectVendorToken = (state) => state.vendor.token
+
+export const selectVendor = (state) => state.vendor
 
 export const selectVendorId = (state) => state.vendor.id

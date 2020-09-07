@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useHistory, Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
+import { useParams } from "react-router-dom"
 
 import { selectRacerId } from "../../store/racer/selectors"
 import { selectVendorId } from "../../store/vendor/selectors"
@@ -11,8 +12,6 @@ import Form from "react-bootstrap/Form"
 import Container from "react-bootstrap/Container"
 import Button from "react-bootstrap/Button"
 import { Col } from "react-bootstrap"
-// import { login } from "../../store/user/actions"
-// import { selectToken } from "../../store/user/selectors"
 
 export default function SignUp() {
 	const history = useHistory()
@@ -25,14 +24,12 @@ export default function SignUp() {
 	const racerId = useSelector(selectRacerId)
 	const vendorId = useSelector(selectVendorId)
 
-	// const token = useSelector(selectToken)
-
 	useEffect(() => {
 		if (racerId !== null) {
-			history.push(`/myprofile`)
+			history.push(`/userdashboard`)
 		}
 		if (vendorId !== null) {
-			history.push(`/mydashboard`)
+			history.push(`/userdashboard`)
 		}
 	}, [racerId, vendorId, history])
 
@@ -43,7 +40,7 @@ export default function SignUp() {
 
 		if (status === "1") {
 			dispatch(loginRacer(email, password, status))
-		} else { 
+		} else {
 			dispatch(loginVendor(email, password, status))
 		}
 	}

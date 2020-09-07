@@ -8,7 +8,6 @@ import {
 	setMessage,
 } from "../appState/actions"
 
-
 export const LOGIN_SUCCESS_VENDOR = "LOGIN_SUCCESS_TEACHER"
 export const TOKEN_STILL_VALID_VENDOR = "TOKEN_STILL_VALID_VENDOR"
 export const LOG_OUT_VENDOR = "LOG_OUT_VENDOR"
@@ -28,10 +27,10 @@ const tokenStillValid = (vendorWithoutToken) => ({
 export const logOutVendor = () => ({ type: LOG_OUT_VENDOR })
 
 export const vendorLoggingOut = () => {
-  return function thunk(dispatch, getState) {
-    dispatch(logOutVendor());
-  };
-};
+	return function thunk(dispatch, getState) {
+		dispatch(logOutVendor())
+	}
+}
 
 export const loginVendor = (email, password, isRacer) => {
 	return async (dispatch, getState) => {
@@ -43,6 +42,8 @@ export const loginVendor = (email, password, isRacer) => {
 				password,
 				isRacer,
 			})
+
+			console.log("WHAT IS RESPONSE", response.data)
 
 			dispatch(loginSuccessVendor(response.data))
 			dispatch(showMessageWithTimeout("success", false, "welcome back!", 1500))
@@ -63,7 +64,6 @@ export const loginVendor = (email, password, isRacer) => {
 export const getVendorWithStoredToken = () => {
 	return async (dispatch, getState) => {
 		const token = selectVendorToken(getState())
-
 		if (token === null) return
 
 		dispatch(appLoading())
@@ -71,7 +71,6 @@ export const getVendorWithStoredToken = () => {
 			const response = await axios.get(`${apiUrl}/vendor`, {
 				headers: { Authorization: `Bearer ${token}` },
 			})
-
 			dispatch(tokenStillValid(response.data))
 			dispatch(appDoneLoading())
 		} catch (error) {
@@ -112,31 +111,3 @@ export const createVendor = (isRacer, name, email, password) => {
 		}
 	}
 }
-
-// export function createSubject(subject) {
-//   return async function thunk(dispatch, getState) {
-//     const token = getState().vendor.token;
-//     dispatch(appLoading());
-//     try {
-//       const response = await axios.post(
-//         `${apiUrl}/subject`,
-//         {
-//           subject,
-//         },
-//         { headers: { Authorization: `Bearer ${token}` } }
-//       );
-//       dispatch(addSubject(response.data.newSubject));
-//       dispatch(showMessageWithTimeout('success', true, response.data.message));
-//       dispatch(appDoneLoading());
-//     } catch (error) {
-//       if (error.response) {
-//         console.log(error.response.data.message);
-//         dispatch(setMessage('danger', true, error.response.data.message));
-//       } else {
-//         console.log(error.message);
-//         dispatch(setMessage('danger', true, error.message));
-//       }
-//       dispatch(appDoneLoading());
-//     }
-//   };
-// }

@@ -2,6 +2,7 @@ import {
 	LOGIN_SUCCESS_RACER,
 	TOKEN_STILL_VALID_RACER,
 	LOG_OUT_RACER,
+	FETCH_DETAILS_RACER
 } from "./actions"
 
 const initialState = {
@@ -19,6 +20,9 @@ export default (state = initialState, action) => {
 
 		case TOKEN_STILL_VALID_RACER:
 			return { ...state, ...action.payload }
+
+		case FETCH_DETAILS_RACER:
+			return action.payload
 
 		case LOG_OUT_RACER:
 			localStorage.removeItem("racer_token")

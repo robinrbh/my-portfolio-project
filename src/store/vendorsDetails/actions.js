@@ -17,6 +17,7 @@ export const vendorDetailsFetched = (vendor) => ({
 export const fetchVendors = () => {
 	return async (dispatch, getState) => {
 		const response = await Axios.get(`${apiUrl}/vendors`)
+		console.log("WHAT IS VENDORS (/VENDORSDETAILS)", response.data)
 
 		dispatch(fetchVendorsSuccess(response.data))
 	}
