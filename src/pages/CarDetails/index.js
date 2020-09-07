@@ -1,27 +1,24 @@
 import React, { useEffect } from "react"
+import { Button, Card, Col, Container, Row } from "react-bootstrap"
+import { useDispatch, useSelector } from "react-redux"
+import { Link, useParams } from "react-router-dom"
 import { fetchCarById } from "../../store/carDetails/actions"
 import { selectCarDetails } from "../../store/carDetails/selectors"
-import { selectVendors } from "../../store/vendorsDetails/selectors"
-import { useParams, Link } from "react-router-dom"
-import { useSelector, useDispatch } from "react-redux"
-import { Container, Card, Row, Col, Button } from "react-bootstrap"
-import { fetchVendors } from "../../store/vendorsDetails/actions"
+import { fetchVendor } from "../../store/vendorsDetails/actions"
+import { selectVendor } from "../../store/vendorsDetails/selectors"
 // import { selectToken, selectUser } from "../../store/user/selectors"
 
 export default function CarDetails(props) {
 	const { id } = useParams()
 	const dispatch = useDispatch()
 	const car = useSelector(selectCarDetails)
-	const vendors = useSelector(selectVendors)
-	console.log("vendors", vendors)
+	const vendors = useSelector(selectVendor)
+	console.log("car", car)
 
 	useEffect(() => {
 		dispatch(fetchCarById(id))
+		dispatch(fetchVendor())
 	}, [dispatch, id])
-
-	useEffect(() => {
-		dispatch(fetchVendors())
-	}, [dispatch])
 
 	return (
 		<>
@@ -42,7 +39,8 @@ export default function CarDetails(props) {
 								<h3>About this vendor</h3>
 							</Card.Header>
 							<Card.Body>
-								{!vendors
+								{console.log("LINE 45", vendors)}
+								{!vendors[0]
 									? "Loading..."
 									: vendors.map((vendor) => {
 											if (vendor.id === car.vendorId)
@@ -52,7 +50,7 @@ export default function CarDetails(props) {
 															src={vendor.imageUrl}
 															style={{ width: "150px", height: "100px" }}
 														/>
-														<p>Name: {vendor.businessName}</p>
+														<p>Name: {vendor.name}</p>
 														<Link to={`/vendors/${vendor.id}`}>
 															<Button>Visit Vendors page</Button>
 														</Link>

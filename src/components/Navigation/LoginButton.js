@@ -13,8 +13,7 @@ export default function LoginButton() {
 
 	return (
 		<>
-			{/* <Nav.Item style={{ padding: ".5rem 1rem" }}>{user.email}</Nav.Item> */}
-			<Button onClick={(goTo)}>Login</Button>
+			<Button onClick={goTo}>Login</Button>
 		</>
 	)
 }

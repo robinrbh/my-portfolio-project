@@ -63,7 +63,6 @@ export const loginVendor = (email, password, isRacer) => {
 export const getVendorWithStoredToken = () => {
 	return async (dispatch, getState) => {
 		const token = selectVendorToken(getState())
-
 		if (token === null) return
 
 		dispatch(appLoading())
@@ -71,7 +70,6 @@ export const getVendorWithStoredToken = () => {
 			const response = await axios.get(`${apiUrl}/vendor`, {
 				headers: { Authorization: `Bearer ${token}` },
 			})
-
 			dispatch(tokenStillValid(response.data))
 			dispatch(appDoneLoading())
 		} catch (error) {
@@ -112,31 +110,3 @@ export const createVendor = (isRacer, name, email, password) => {
 		}
 	}
 }
-
-// export function createSubject(subject) {
-//   return async function thunk(dispatch, getState) {
-//     const token = getState().vendor.token;
-//     dispatch(appLoading());
-//     try {
-//       const response = await axios.post(
-//         `${apiUrl}/subject`,
-//         {
-//           subject,
-//         },
-//         { headers: { Authorization: `Bearer ${token}` } }
-//       );
-//       dispatch(addSubject(response.data.newSubject));
-//       dispatch(showMessageWithTimeout('success', true, response.data.message));
-//       dispatch(appDoneLoading());
-//     } catch (error) {
-//       if (error.response) {
-//         console.log(error.response.data.message);
-//         dispatch(setMessage('danger', true, error.response.data.message));
-//       } else {
-//         console.log(error.message);
-//         dispatch(setMessage('danger', true, error.message));
-//       }
-//       dispatch(appDoneLoading());
-//     }
-//   };
-// }

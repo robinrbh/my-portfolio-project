@@ -11,6 +11,7 @@ import {
 export const LOGIN_SUCCESS_RACER = "LOGIN_SUCCESS_RACER"
 export const TOKEN_STILL_VALID_RACER = "TOKEN_STILL_VALID_RACER"
 export const LOG_OUT_RACER = "LOG_OUT_RACER"
+export const FETCH_DETAILS_RACER = "FETCH_DETAILS_RACER"
 
 const loginSuccessRacer = (userWithToken) => {
 	return {
@@ -23,6 +24,13 @@ const tokenStillValid = (userWithoutToken) => ({
 	type: TOKEN_STILL_VALID_RACER,
 	payload: userWithoutToken,
 })
+
+const racerDetailsFetched = (racer) => {
+	return {
+		type: FETCH_DETAILS_RACER,
+		payload: racer,
+	}
+}
 
 export const loginRacer = (email, password, isRacer) => {
 	return async (dispatch, getState) => {
@@ -51,15 +59,21 @@ export const loginRacer = (email, password, isRacer) => {
 	}
 }
 
+export const fetchRacerById = (id) => {
+	return async (dispatch, getState) => {
+		const response = await axios.get(`${apiUrl}/racers/${id}`)
+
+		dispatch(racerDetailsFetched(response.data))
+	}
+}
+
 export const getRacerWithStoredToken = () => {
 	return async (dispatch, getState) => {
 		const token = selectRacerToken(getState())
-
 		if (token === null) return
 
 		dispatch(appLoading())
 		try {
-			// if token check if valid
 			const response = await axios.get(`${apiUrl}/racer`, {
 				headers: { Authorization: `Bearer ${token}` },
 			})

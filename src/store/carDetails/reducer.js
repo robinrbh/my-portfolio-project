@@ -2,7 +2,7 @@ import {
 	CARDETAILS_FETCHED,
 } from "./actions"
 
-const initialState = {}
+const initialState = []
 
 export default (state = initialState, action) => {
 

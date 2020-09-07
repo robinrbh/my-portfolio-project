@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { fetchVendorById } from "../../store/vendorsDetails/actions"
-import { selectVendorDetails } from "../../store/vendorsDetails/selectors"
+import { selectVendor } from "../../store/vendorsDetails/selectors"
 import { useParams } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { Container, Row, Col, CardDeck, Card } from "react-bootstrap"
@@ -10,8 +10,8 @@ export default function VendorDetails() {
 	const { id } = useParams()
 	const dispatch = useDispatch()
 
-	const vendor = useSelector(selectVendorDetails)
-	console.log("vendor", vendor)
+	const vendor = useSelector(selectVendor)
+
 
 	useEffect(() => {
 		dispatch(fetchVendorById(id))
@@ -25,12 +25,12 @@ export default function VendorDetails() {
 						<img src={vendor.imageUrl} style={{ width: "150px" }} />
 					</Col>
 					<Col sm={10}>
-						<h3>{vendor.businessName}</h3>
+						<h3>{vendor.name}</h3>
 						<p>{vendor.description}</p>
 					</Col>
 				</Row>
 				<Row>
-					<h3>Cars for rent @ {vendor.businessName}</h3>
+					<h3>Cars for rent @ {vendor.name}</h3>
 				</Row>
 				<Row>
 					<CardDeck style={{ display: "block" }}>
