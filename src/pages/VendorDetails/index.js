@@ -12,6 +12,8 @@ export default function VendorDetails() {
 
 	const vendor = useSelector(selectVendors)
 
+	console.log("ratings", vendor.ratings)
+
 	useEffect(() => {
 		dispatch(fetchVendorById(id))
 	}, [dispatch, id])
@@ -58,14 +60,23 @@ export default function VendorDetails() {
 							  })}
 					</CardDeck>
 				</Row>
+				{/* <Row>
+					<h4>Reviews</h4>
+				</Row>
 				<Row>
-					Reviews
 					{!vendor.ratings
 						? "Loading..."
 						: vendor.ratings.map((rating) => {
-								return "Hello"
+								return (
+									<Card>
+										<Card.Body>
+											<h4>{rating.rating}/5</h4>
+											<p>{rating.comment}</p>
+										</Card.Body>
+									</Card>
+								)
 						  })}
-				</Row>
+				</Row> */}
 			</Container>
 		</>
 	)

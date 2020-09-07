@@ -29,7 +29,7 @@ export default function Racer() {
 		<>
 			<h1>Welcome, {racer.name}</h1>
 			<Row>
-				<Col sm={8}>
+				<Col sm={10}>
 					<Card>
 						<Card.Body>
 							<h3>Bookings</h3>
@@ -66,10 +66,15 @@ export default function Racer() {
 						</Card.Body>
 					</Card>
 				</Col>
-				<Col sm={4}>
+				<Col sm={2}>
 					<Card>
-						{/* <Card><img src={vendor.imageUrl} /></Card> */}
-						<Card.Body>Profile</Card.Body>
+						<Card.Body>
+							<h4>Personal information</h4>
+							<img width="200px" src={racer.imageUrl} />
+
+							<p>Name: {racer.name}</p>
+							<p>Email: {racer.email}</p>
+						</Card.Body>
 					</Card>
 				</Col>
 			</Row>
