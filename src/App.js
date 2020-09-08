@@ -37,7 +37,7 @@ function App() {
 				{isLoading ? <Loading /> : null}
 				<Switch>
 					<Route exact path="/" component={Home} />
-					<Route path="/cars/:id" component={CarDetails} />
+					<Route exact path="/cars/:id" component={CarDetails} />
 					<Route path="/cars/:id/book" component={BookACar} />
 					<Route path="/vendors/:id" component={VendorDetails} />
 					<Route path="/userdashboard" component={Component} />

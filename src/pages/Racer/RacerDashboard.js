@@ -22,7 +22,6 @@ export default function Racer() {
 
 	useEffect(() => {
 		dispatch(fetchCars())
-		// dispatch(fetchRacers())
 	}, [dispatch])
 
 	return (
