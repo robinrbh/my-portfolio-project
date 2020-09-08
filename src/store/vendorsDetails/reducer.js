@@ -1,6 +1,12 @@
-import { FETCH_VENDORS_SUCCESS, VENDORDETAILS_FETCHED } from "./actions"
+import {
+	FETCH_VENDORS_SUCCESS,
+	VENDORDETAILS_FETCHED,
+	POST_REVIEW_SUCCESS,
+} from "./actions"
 
-const initialState = {}
+const initialState = {
+	ratings: null,
+}
 
 export default (state = initialState, action) => {
 	switch (action.type) {
@@ -9,6 +15,9 @@ export default (state = initialState, action) => {
 
 		case VENDORDETAILS_FETCHED:
 			return action.payload
+
+		case POST_REVIEW_SUCCESS:
+			return { ...state, ...action.payload }
 
 		default:
 			return state
