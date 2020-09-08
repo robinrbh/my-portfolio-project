@@ -39,26 +39,26 @@ export default function Racer() {
 									<thead>
 										<tr>
 											<th>Racecar</th>
-											<th>Date</th>
 											<th>Location</th>
 											<th>Contact</th>
 										</tr>
 									</thead>
 									<tbody>
-										{allBookings.map((booking) => {
-											return (
-												<>
-													<tr>
-														<td>
-															{booking.car.brand} {booking.car.model}
-														</td>
-														<td>{booking.orderDate}</td>
-														<td>{booking.track.name}</td>
-														<td>{booking.car.vendor.email}</td>
-													</tr>
-												</>
-											)
-										})}
+										{!allBookings
+											? "Loading.."
+											: allBookings.map((booking) => {
+													return (
+														<>
+															<tr>
+																<td>
+																	{booking.car.brand} {booking.car.model}
+																</td>
+																<td>{booking.track.name}</td>
+																<td>{booking.car.vendor.email}</td>
+															</tr>
+														</>
+													)
+											  })}
 									</tbody>
 								</Table>
 							)}

@@ -11,6 +11,7 @@ import {
 export const LOGIN_SUCCESS_VENDOR = "LOGIN_SUCCESS_TEACHER"
 export const TOKEN_STILL_VALID_VENDOR = "TOKEN_STILL_VALID_VENDOR"
 export const LOG_OUT_VENDOR = "LOG_OUT_VENDOR"
+export const UPLOAD_LOGO_SUCCESS = "UPLOAD_LOGO_SUCCESS"
 
 const loginSuccessVendor = (vendorWithToken) => {
 	return {
@@ -22,6 +23,11 @@ const loginSuccessVendor = (vendorWithToken) => {
 const tokenStillValid = (vendorWithoutToken) => ({
 	type: TOKEN_STILL_VALID_VENDOR,
 	payload: vendorWithoutToken,
+})
+
+const uploadLogoSuccess = (logo) => ({
+	type: UPLOAD_LOGO_SUCCESS,
+	payload: logo,
 })
 
 export const logOutVendor = () => ({ type: LOG_OUT_VENDOR })
@@ -109,5 +115,30 @@ export const createVendor = (isRacer, name, email, password) => {
 			}
 			dispatch(appDoneLoading())
 		}
+	}
+}
+
+export const uploadLogo = (newLogo) => {
+	return async (dispatch, getState) => {
+		dispatch(appLoading())
+
+		// console.log("getState", getState())
+		const id = getState().vendor.id
+
+		const response = await axios.patch(`${apiUrl}/vendors/${id}`, {
+			newLogo,
+		})
+		console.log("response new logo", response.data.updatedLogo.imageUrl)
+
+		dispatch(uploadLogoSuccess(response.data.updatedLogo.imageUrl))
+		dispatch(
+			showMessageWithTimeout(
+				"success",
+				false,
+				"You successfully uploaded a new logo!",
+				3000
+			)
+		)
+		dispatch(appDoneLoading())
 	}
 }

@@ -56,7 +56,7 @@ export default function CarDetails(props) {
 													<div key={vendor.id}>
 														<img
 															src={vendor.imageUrl}
-															style={{ width: "150px", height: "100px" }}
+															style={{ width: "150px" }}
 														/>
 														<p>Name: {vendor.name}</p>
 														<Link to={`/vendors/${vendor.id}`}>
