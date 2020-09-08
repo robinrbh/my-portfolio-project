@@ -19,10 +19,13 @@ export default function BookACar() {
 		dispatch(fetchCarById(id))
 	}, [dispatch, id])
 
+	// console.log("racer", racer)
+
 	function submitForm(event) {
 		event.preventDefault()
+
 		if (location !== null && location !== "Choose...") {
-			// dispatch(bookCar(location))
+			dispatch(bookCar(location))
 			console.log(location)
 		}
 	}
@@ -54,8 +57,7 @@ export default function BookACar() {
 								{!car.tracks
 									? "Loading..."
 									: car.tracks.map((track) => {
-											console.log(track)
-											return <option>{track.name}</option>
+											return <option value={track.id}>{track.name}</option>
 									  })}
 							</Form.Control>
 						</Form.Group>

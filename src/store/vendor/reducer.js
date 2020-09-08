@@ -2,6 +2,7 @@ import {
 	LOG_OUT_VENDOR,
 	LOGIN_SUCCESS_VENDOR,
 	TOKEN_STILL_VALID_VENDOR,
+	UPLOAD_LOGO_SUCCESS,
 } from "./actions"
 
 const initialState = {
@@ -22,6 +23,9 @@ export default (state = initialState, action) => {
 			return { ...initialState, token: null }
 
 		case TOKEN_STILL_VALID_VENDOR:
+			return { ...state, ...action.payload }
+
+		case UPLOAD_LOGO_SUCCESS:
 			return { ...state, ...action.payload }
 
 		// case ADD_SUBJECT:

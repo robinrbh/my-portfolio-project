@@ -28,7 +28,7 @@ function App() {
 
 	return (
 		<div>
-			<div style={{ width: "100%", borderBottom: "1px solid #000" }}>
+			<div style={{ width: "100%", borderBottom: "1px solid #c9c9c9" }}>
 				<h1 style={{ paddingLeft: "20px" }}>Racing Valley</h1>
 			</div>
 			<Navigation />
@@ -44,6 +44,21 @@ function App() {
 					<Route path="/login" component={Login} />
 					<Route path="/signup" component={Signup} />
 				</Switch>
+			</div>
+			<div
+				style={{
+					width: "100%",
+					borderTop: "1px solid #c9c9c9",
+					padding: "10px",
+				}}
+			>
+				<p style={{ textAlign: "center" }}>
+					Made with{" "}
+					<span role="img" aria-label="emoji">
+						♥
+					</span>{" "}
+					by Robin
+				</p>
 			</div>
 		</div>
 	)
