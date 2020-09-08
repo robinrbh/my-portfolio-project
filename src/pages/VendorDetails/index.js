@@ -19,8 +19,6 @@ export default function VendorDetails() {
 	const reviews = useSelector(selectReview)
 	const token = useSelector(selectRacerToken)
 
-	console.log("ratings", vendor.ratings)
-
 	useEffect(() => {
 		dispatch(fetchVendorById(id))
 	}, [dispatch, id, reviews])
@@ -28,16 +26,16 @@ export default function VendorDetails() {
 	return (
 		<>
 			<Container>
-				<Row>
+				<Row style={{ marginBottom: "40px" }}>
 					<Col sm={2}>
-						<img src={vendor.imageUrl} style={{ width: "150px" }} />
+						<img alt="logo" src={vendor.imageUrl} style={{ width: "150px" }} />
 					</Col>
 					<Col sm={10}>
 						<h3>{vendor.name}</h3>
 						<p>{vendor.description}</p>
 					</Col>
 				</Row>
-				<Row>
+				<Row style={{ marginBottom: "20px" }}>
 					<h3>Cars for rent @ {vendor.name}</h3>
 				</Row>
 				<Row>

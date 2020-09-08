@@ -16,8 +16,6 @@ export default function CarDetails(props) {
 	const vendors = useSelector(selectVendors)
 	const token = useSelector(selectRacerToken)
 
-	console.log("car", car)
-
 	useEffect(() => {
 		dispatch(fetchCarById(id))
 		dispatch(fetchVendors())
@@ -47,7 +45,6 @@ export default function CarDetails(props) {
 								<h3>About this vendor</h3>
 							</Card.Header>
 							<Card.Body>
-								{console.log("LINE 45", vendors)}
 								{!vendors[0]
 									? "Loading..."
 									: vendors.map((vendor) => {
@@ -55,6 +52,7 @@ export default function CarDetails(props) {
 												return (
 													<div key={vendor.id}>
 														<img
+															alt="logo"
 															src={vendor.imageUrl}
 															style={{ width: "150px" }}
 														/>

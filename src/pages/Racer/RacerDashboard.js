@@ -1,9 +1,8 @@
 import React, { useEffect } from "react"
 import { Card, Col, Row, Table } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
-import { useHistory } from "react-router-dom"
 import { fetchCars } from "../../store/cars/actions"
-import { selectRacer, selectRacerToken } from "../../store/racer/selectors"
+import { selectRacer } from "../../store/racer/selectors"
 
 export default function Racer() {
 	const dispatch = useDispatch()
@@ -14,11 +13,6 @@ export default function Racer() {
 		: racer.bookings.map((booking) => {
 				return booking
 		  })
-
-	console.log("bookings", allBookings)
-
-	const token = useSelector(selectRacerToken)
-	const history = useHistory()
 
 	useEffect(() => {
 		dispatch(fetchCars())
@@ -69,7 +63,7 @@ export default function Racer() {
 					<Card>
 						<Card.Body>
 							<h4>Personal information</h4>
-							<img width="200px" src={racer.imageUrl} />
+							<img alt="racer" width="200px" src={racer.imageUrl} />
 
 							<p>Name: {racer.name}</p>
 							<p>Email: {racer.email}</p>

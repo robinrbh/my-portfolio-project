@@ -34,7 +34,7 @@ export default function Vendor() {
 		}
 		dispatch(fetchCars())
 		dispatch(fetchRacers())
-	}, [dispatch, history, logo])
+	}, [dispatch, history, token, logo])
 
 	return (
 		<>
@@ -45,7 +45,6 @@ export default function Vendor() {
 						<Card.Body>
 							<h3>Description</h3>
 							{vendor.description}
-							{/* <Link>change your description</Link> */}
 						</Card.Body>
 					</Card>
 
@@ -88,7 +87,7 @@ export default function Vendor() {
 				<Col sm={2}>
 					<Card style={{ marginBottom: "20px" }}>
 						<Card.Body>
-							<img width="150px" src={logo} />
+							<img alt="logo" width="150px" src={logo} />
 						</Card.Body>
 						<Card.Body>
 							{displayEditLink ? (

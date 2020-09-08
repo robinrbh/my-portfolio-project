@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Container, Form, Button, Col } from "react-bootstrap"
+import { Button, Container, Form } from "react-bootstrap"
 import { useDispatch } from "react-redux"
 import { postReview } from "../../store/vendorsDetails/actions"
 
@@ -10,8 +10,6 @@ export default function AddReview() {
 
 	function submitForm(event) {
 		event.preventDefault()
-		console.log("rating", rating)
-		console.log("comment", comment)
 		dispatch(postReview(comment, rating))
 
 		setComment("")

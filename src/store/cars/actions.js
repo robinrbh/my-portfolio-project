@@ -1,11 +1,11 @@
-import { apiUrl } from "../../config/constants"
 import Axios from "axios"
-import { selectRacer } from "../racer/selectors"
+import { apiUrl } from "../../config/constants"
 import {
-	appLoading,
 	appDoneLoading,
+	appLoading,
 	showMessageWithTimeout,
 } from "../appState/actions"
+import { selectRacer } from "../racer/selectors"
 
 export const FETCH_CARS_SUCCESS = "FETCH_CARS_SUCCESS"
 export const FETCH_VENDORS_SUCCESS = "FETCH_VENDORS_SUCCES"
@@ -34,10 +34,7 @@ export const bookCar = (location) => {
 		dispatch(appLoading())
 
 		const { token } = selectRacer(getState())
-
-		console.log("getState", getState().racer)
 		const id = getState().carDetails.id
-		// const idRacer = getState().racer.id
 
 		const response = await Axios.post(
 			`${apiUrl}/cars/${id}/book`,
@@ -52,7 +49,6 @@ export const bookCar = (location) => {
 				},
 			}
 		)
-		console.log("response bookings", response.data)
 
 		dispatch(
 			showMessageWithTimeout(
