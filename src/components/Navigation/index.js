@@ -1,20 +1,15 @@
 import React, { useEffect } from "react"
 import Nav from "react-bootstrap/Nav"
 import Navbar from "react-bootstrap/Navbar"
-import NavbarItem from "./NavbarItem"
+import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
-import { useSelector } from "react-redux"
-
+import { getRacerWithStoredToken } from "../../store/racer/actions"
+import { selectRacerToken } from "../../store/racer/selectors"
+import { getVendorWithStoredToken } from "../../store/vendor/actions"
+import { selectVendorToken } from "../../store/vendor/selectors"
 import LoginButton from "./LoginButton"
 import LogoutButton from "./LogoutButton"
-
-import { selectVendorName } from "../../store/vendor/selectors"
-import { selectRacerName } from "../../store/racer/selectors"
-import { selectRacerToken } from "../../store/racer/selectors"
-import { selectVendorToken } from "../../store/vendor/selectors"
-import { getRacerWithStoredToken } from "../../store/racer/actions"
-import { useDispatch } from "react-redux"
-import { getVendorWithStoredToken } from "../../store/vendor/actions"
+import NavbarItem from "./NavbarItem"
 
 export default function Navigation() {
 	const dispatch = useDispatch()

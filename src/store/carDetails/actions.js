@@ -1,10 +1,5 @@
 import { apiUrl } from "../../config/constants"
 import Axios from "axios"
-import {
-	appLoading,
-	appDoneLoading,
-	showMessageWithTimeout,
-} from "../appState/actions"
 
 export const CARDETAILS_FETCHED = "CARDETAILS_FETCHED"
 
@@ -16,9 +11,7 @@ export const carDetailsFetched = (car) => ({
 export const fetchCarById = (id) => {
 	return async (dispatch, getState) => {
 		const response = await Axios.get(`${apiUrl}/cars/${id}`)
-    
+
 		dispatch(carDetailsFetched(response.data))
 	}
 }
-
-

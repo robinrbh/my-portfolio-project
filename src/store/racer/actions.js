@@ -34,7 +34,6 @@ const racerDetailsFetched = (racer) => {
 
 export const loginRacer = (email, password, isRacer) => {
 	return async (dispatch, getState) => {
-		console.log("WHAT IS RACER", isRacer)
 		dispatch(appLoading())
 		try {
 			const response = await axios.post(`${apiUrl}/login`, {
@@ -48,10 +47,8 @@ export const loginRacer = (email, password, isRacer) => {
 			dispatch(appDoneLoading())
 		} catch (error) {
 			if (error.response) {
-				console.log(error.response.data.message)
 				dispatch(setMessage("error", true, error.response.data.message))
 			} else {
-				console.log(error.message)
 				dispatch(setMessage("error", true, error.message))
 			}
 			dispatch(appDoneLoading())

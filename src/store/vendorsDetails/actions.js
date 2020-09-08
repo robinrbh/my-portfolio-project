@@ -23,7 +23,6 @@ export const postReviewSuccess = (review) => ({
 export const fetchVendors = () => {
 	return async (dispatch, getState) => {
 		const response = await Axios.get(`${apiUrl}/vendors`)
-		console.log("WHAT IS VENDORS (/VENDORSDETAILS)", response.data)
 
 		dispatch(fetchVendorsSuccess(response.data))
 	}
@@ -39,14 +38,11 @@ export const fetchVendorById = (id) => {
 
 export const postReview = (comment, rating) => {
 	return async (dispatch, getState) => {
-		// console.log(getState())
 		const id = getState().vendors.id
 		const response = await Axios.post(`${apiUrl}/vendors/${id}`, {
 			comment,
 			rating,
 		})
-
-		console.log("response", response)
 
 		dispatch(postReviewSuccess(response.data))
 	}

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useHistory, Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
 
 import { selectRacerId } from "../../store/racer/selectors"
 import { selectVendorId } from "../../store/vendor/selectors"
@@ -35,8 +34,6 @@ export default function SignUp() {
 
 	function submitForm(event) {
 		event.preventDefault()
-
-		console.log("status", status)
 
 		if (status === "1") {
 			dispatch(loginRacer(email, password, status))

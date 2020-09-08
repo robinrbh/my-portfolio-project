@@ -9,7 +9,6 @@ import Car from "../../components/Car"
 export default function Cars() {
 	const dispatch = useDispatch()
 	const cars = useSelector(selectCars)
-	console.log("cars", cars)
 
 	useEffect(() => {
 		dispatch(fetchCars())
@@ -23,7 +22,7 @@ export default function Cars() {
 					"Unfortunately there are no cars available at this time."
 				) : (
 					<CardDeck style={{ display: "block" }}>
-						{cars.map((car) => {
+						{cars.map((car, i) => {
 							return (
 								<Card
 									style={{
@@ -31,6 +30,7 @@ export default function Cars() {
 										width: "500px",
 										marginBottom: "20px",
 									}}
+									key={i}
 								>
 									<Car
 										key={car.id}

@@ -40,7 +40,6 @@ export const vendorLoggingOut = () => {
 
 export const loginVendor = (email, password, isRacer) => {
 	return async (dispatch, getState) => {
-		console.log("WHAT IS VENDOR", isRacer)
 		dispatch(appLoading())
 		try {
 			const response = await axios.post(`${apiUrl}/login`, {
@@ -48,8 +47,6 @@ export const loginVendor = (email, password, isRacer) => {
 				password,
 				isRacer,
 			})
-
-			console.log("WHAT IS RESPONSE", response.data)
 
 			dispatch(loginSuccessVendor(response.data))
 			dispatch(showMessageWithTimeout("success", false, "welcome back!", 1500))
