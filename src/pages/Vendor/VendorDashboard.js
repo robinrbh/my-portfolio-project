@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom"
 import { fetchCars } from "../../store/cars/actions"
 import { selectCars } from "../../store/cars/selectors"
 import { fetchRacers } from "../../store/racer/actions"
-import { selectVendorToken } from "../../store/vendor/selectors"
+import { selectVendorToken, selectLogo } from "../../store/vendor/selectors"
 import { selectVendor } from "../../store/vendorsDetails/selectors"
 import UploadLogoForm from "../../components/UploadLogoForm/UploadLogoForm"
 
@@ -24,6 +24,7 @@ export default function Vendor() {
 
 	const token = useSelector(selectVendorToken)
 	const history = useHistory()
+	const logo = useSelector(selectLogo)
 
 	const displayEditLink = editMode === false
 
@@ -33,7 +34,7 @@ export default function Vendor() {
 		}
 		dispatch(fetchCars())
 		dispatch(fetchRacers())
-	}, [dispatch, history])
+	}, [dispatch, history, logo])
 
 	return (
 		<>
@@ -87,7 +88,7 @@ export default function Vendor() {
 				<Col sm={2}>
 					<Card style={{ marginBottom: "20px" }}>
 						<Card.Body>
-							<img width="150px" src={vendor.imageUrl} />
+							<img width="150px" src={logo} />
 						</Card.Body>
 						<Card.Body>
 							{displayEditLink ? (

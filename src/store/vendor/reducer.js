@@ -9,6 +9,7 @@ const initialState = {
 	token: localStorage.getItem("vendor_token"),
 	name: null,
 	email: null,
+	imageUrl: null,
 	id: null,
 }
 
@@ -26,7 +27,7 @@ export default (state = initialState, action) => {
 			return { ...state, ...action.payload }
 
 		case UPLOAD_LOGO_SUCCESS:
-			return { ...state, ...action.payload }
+			return { ...state, imageUrl: action.payload }
 
 		// case ADD_SUBJECT:
 		//   if (state.subjects) {

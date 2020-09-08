@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux"
 import { uploadLogo } from "../../store/vendor/actions"
 
 export default function UploadLogoForm() {
-	const [logo, setLogo] = useState("")
 	const [loading, setLoading] = useState(false)
 	const dispatch = useDispatch()
 
