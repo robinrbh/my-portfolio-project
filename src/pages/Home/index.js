@@ -9,6 +9,7 @@ import Car from "../../components/Car"
 export default function Cars() {
 	const dispatch = useDispatch()
 	const cars = useSelector(selectCars)
+	console.log("cars", cars)
 
 	useEffect(() => {
 		dispatch(fetchCars())
@@ -18,29 +19,33 @@ export default function Cars() {
 		<>
 			<Container>
 				<h1>Cars for rent</h1>
-				<CardDeck style={{ display: "block" }}>
-					{cars.map((car) => {
-						return (
-							<Card
-								style={{
-									display: "inline-block",
-									width: "500px",
-									marginBottom: "20px",
-								}}
-							>
-								<Car
-									key={car.id}
-									id={car.id}
-									brand={car.brand}
-									model={car.model}
-									gearbox={car.gearbox}
-									bhp={car.bhp}
-									imageUrl={car.imageUrl}
-								/>
-							</Card>
-						)
-					})}
-				</CardDeck>
+				{cars.isAvailable === false ? (
+					"Unfortunately there are no cars available at this time."
+				) : (
+					<CardDeck style={{ display: "block" }}>
+						{cars.map((car) => {
+							return (
+								<Card
+									style={{
+										display: "inline-block",
+										width: "500px",
+										marginBottom: "20px",
+									}}
+								>
+									<Car
+										key={car.id}
+										id={car.id}
+										brand={car.brand}
+										model={car.model}
+										gearbox={car.gearbox}
+										bhp={car.bhp}
+										imageUrl={car.imageUrl}
+									/>
+								</Card>
+							)
+						})}
+					</CardDeck>
+				)}
 			</Container>
 		</>
 	)

@@ -6,6 +6,7 @@ import { fetchCarById } from "../../store/carDetails/actions"
 import { selectCarDetails } from "../../store/carDetails/selectors"
 import { fetchVendors } from "../../store/vendorsDetails/actions"
 import { selectVendors } from "../../store/vendorsDetails/selectors"
+import { selectRacerToken } from "../../store/racer/selectors"
 // import { selectToken, selectUser } from "../../store/user/selectors"
 
 export default function CarDetails(props) {
@@ -13,6 +14,8 @@ export default function CarDetails(props) {
 	const dispatch = useDispatch()
 	const car = useSelector(selectCarDetails)
 	const vendors = useSelector(selectVendors)
+	const token = useSelector(selectRacerToken)
+
 	console.log("car", car)
 
 	useEffect(() => {
@@ -32,9 +35,11 @@ export default function CarDetails(props) {
 							{car.brand} {car.model}
 						</h3>
 						<p>{car.description}</p>
-						<Link>
-							<Button>Book this car!</Button>
-						</Link>
+						{!token ? null : (
+							<Link to={`/cars/${car.id}/book`}>
+								<Button>Book this car!</Button>
+							</Link>
+						)}
 					</Col>
 					<Col>
 						<Card>
