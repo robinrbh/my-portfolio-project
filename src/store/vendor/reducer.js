@@ -29,13 +29,6 @@ export default (state = initialState, action) => {
 		case UPLOAD_LOGO_SUCCESS:
 			return { ...state, imageUrl: action.payload }
 
-		// case ADD_SUBJECT:
-		//   if (state.subjects) {
-		//     return { ...state, subjects: [...state.subjects, action.payload] };
-		//   } else {
-		//     return { ...state, subjects: [action.payload] };
-		//   }
-
 		default:
 			return state
 	}

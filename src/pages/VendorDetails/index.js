@@ -1,22 +1,29 @@
 import React, { useEffect } from "react"
 import { fetchVendorById } from "../../store/vendorsDetails/actions"
-import { selectVendors } from "../../store/vendorsDetails/selectors"
+import {
+	selectVendors,
+	selectReview,
+} from "../../store/vendorsDetails/selectors"
 import { useParams } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { Container, Row, Col, CardDeck, Card } from "react-bootstrap"
 import Car from "../../components/Car"
+import AddReview from "../../components/AddReview"
+import { selectRacerToken } from "../../store/racer/selectors"
 
 export default function VendorDetails() {
 	const { id } = useParams()
 	const dispatch = useDispatch()
 
 	const vendor = useSelector(selectVendors)
+	const reviews = useSelector(selectReview)
+	const token = useSelector(selectRacerToken)
 
 	console.log("ratings", vendor.ratings)
 
 	useEffect(() => {
 		dispatch(fetchVendorById(id))
-	}, [dispatch, id])
+	}, [dispatch, id, reviews])
 
 	return (
 		<>
@@ -60,7 +67,7 @@ export default function VendorDetails() {
 							  })}
 					</CardDeck>
 				</Row>
-				{/* <Row>
+				<Row>
 					<h4>Reviews</h4>
 				</Row>
 				<Row>
@@ -68,15 +75,17 @@ export default function VendorDetails() {
 						? "Loading..."
 						: vendor.ratings.map((rating) => {
 								return (
-									<Card>
+									<Card style={{ width: "100%", marginBottom: "20px" }}>
 										<Card.Body>
 											<h4>{rating.rating}/5</h4>
+
 											<p>{rating.comment}</p>
 										</Card.Body>
 									</Card>
 								)
 						  })}
-				</Row> */}
+				</Row>
+				<Row>{token ? <AddReview /> : null}</Row>
 			</Container>
 		</>
 	)
