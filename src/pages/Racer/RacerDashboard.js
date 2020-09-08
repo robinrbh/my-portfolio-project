@@ -63,7 +63,7 @@ export default function Racer() {
 					<Card>
 						<Card.Body>
 							<h4>Personal information</h4>
-							<img alt="racer" width="200px" src={racer.imageUrl} />
+							<img alt="racer" width="150px" src={racer.imageUrl} />
 
 							<p>Name: {racer.name}</p>
 							<p>Email: {racer.email}</p>
