@@ -15,6 +15,7 @@ import VendorDetails from "./pages/VendorDetails"
 import { selectAppLoading } from "./store/appState/selectors"
 import { selectRacerToken } from "./store/racer/selectors"
 import { selectVendorToken } from "./store/vendor/selectors"
+import { Container, Row, Col } from "react-bootstrap"
 
 function App() {
 	const isLoading = useSelector(selectAppLoading)
@@ -31,7 +32,9 @@ function App() {
 			<div style={{ width: "100%", borderBottom: "1px solid #c9c9c9" }}>
 				<h1 style={{ paddingLeft: "20px" }}>Racing Valley</h1>
 			</div>
+
 			<Navigation />
+
 			<MessageBox />
 			<div style={{ padding: "20px" }}>
 				{isLoading ? <Loading /> : null}
