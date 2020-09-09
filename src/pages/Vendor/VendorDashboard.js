@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Card, Col, Row, Table, Button } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
-import { Link, useHistory, useParams } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import UploadLogoForm from "../../components/UploadLogoForm/UploadLogoForm"
 import { fetchCars } from "../../store/cars/actions"
 import { selectCars } from "../../store/cars/selectors"
