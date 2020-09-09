@@ -84,7 +84,7 @@ export default function SignUp() {
 					/>
 				</Form.Group>
 				<Form.Group className="mt-5">
-					<Button variant="primary" type="submit" onClick={submitForm}>
+					<Button variant="dark" type="submit" onClick={submitForm}>
 						Log in
 					</Button>
 				</Form.Group>

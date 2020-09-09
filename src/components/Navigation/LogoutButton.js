@@ -33,7 +33,9 @@ export default function LogoutButton() {
 	return (
 		<>
 			<Nav.Item style={{ padding: ".5rem 1rem" }}>Welcome, {name}</Nav.Item>
-			<Button onClick={handleLogOut}>Logout</Button>
+			<Button variant="outline-light" onClick={handleLogOut}>
+				Logout
+			</Button>
 		</>
 	)
 }

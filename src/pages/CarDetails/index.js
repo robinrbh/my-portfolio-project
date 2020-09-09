@@ -13,6 +13,11 @@ export default function CarDetails(props) {
 	const { id } = useParams()
 	const dispatch = useDispatch()
 	const car = useSelector(selectCarDetails)
+
+	console.log("car", car)
+
+	const tracks = car.tracks
+
 	const vendors = useSelector(selectVendors)
 	const token = useSelector(selectRacerToken)
 
@@ -32,10 +37,18 @@ export default function CarDetails(props) {
 						<h3 style={{ textShadow: "1px 1px #fff" }}>
 							{car.brand} {car.model}
 						</h3>
-						<p>{car.description}</p>
+						<p>{car.description}</p>{" "}
+						<p>This car is available on the following track(s):</p>
+						<ul>
+							{!tracks
+								? "Loading..."
+								: tracks.map((track) => {
+										return <li>{track.name}</li>
+								  })}
+						</ul>
 						{!token ? null : (
 							<Link to={`/cars/${car.id}/book`}>
-								<Button>Book this car!</Button>
+								<Button variant="success">Book this car!</Button>
 							</Link>
 						)}
 					</Col>
@@ -58,13 +71,14 @@ export default function CarDetails(props) {
 														/>
 														<p>Name: {vendor.name}</p>
 														<Link to={`/vendors/${vendor.id}`}>
-															<Button>Visit Vendors page</Button>
+															<Button variant="secondary">
+																Visit Vendors page
+															</Button>
 														</Link>
 													</div>
 												)
 									  })}
 							</Card.Body>
-							<Card.Footer>Rating</Card.Footer>
 						</Card>
 					</Col>
 				</Row>
