@@ -6,10 +6,12 @@ import {
 	showMessageWithTimeout,
 } from "../appState/actions"
 import { selectRacer } from "../racer/selectors"
+import { selectVendor } from "../vendor/selectors"
 
 export const FETCH_CARS_SUCCESS = "FETCH_CARS_SUCCESS"
 export const FETCH_VENDORS_SUCCESS = "FETCH_VENDORS_SUCCES"
 export const POST_BOOKING_SUCCESS = "POST_BOOKING_SUCCESS"
+export const ADD_NEW_CAR_SUCCESS = "ADD_NEW_CAR_SUCCESS"
 
 export const fetchCarsSuccess = (cars) => ({
 	type: FETCH_CARS_SUCCESS,
@@ -19,6 +21,11 @@ export const fetchCarsSuccess = (cars) => ({
 export const postBookingSuccess = (bookings) => ({
 	type: POST_BOOKING_SUCCESS,
 	payload: bookings,
+})
+
+export const addNewCarSuccess = (car) => ({
+	type: ADD_NEW_CAR_SUCCESS,
+	payload: car,
 })
 
 export const fetchCars = () => {
@@ -62,6 +69,49 @@ export const bookCar = (location) => {
 			)
 		)
 		dispatch(postBookingSuccess(response.data))
+		dispatch(appDoneLoading())
+	}
+}
+
+export const addNewCar = (
+	brand,
+	model,
+	bhp,
+	description,
+	gearbox,
+	imageUrl
+) => {
+	return async (dispatch, getState) => {
+		dispatch(appLoading())
+
+		const { token } = selectVendor(getState())
+
+		const response = await Axios.post(
+			`${apiUrl}/cars`,
+			{
+				brand,
+				model,
+				bhp,
+				description,
+				gearbox,
+				imageUrl,
+			},
+			{
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			}
+		)
+
+		dispatch(
+			showMessageWithTimeout(
+				"success",
+				false,
+				"You successfully added a new car!",
+				3000
+			)
+		)
+		dispatch(addNewCarSuccess(response.data))
 		dispatch(appDoneLoading())
 	}
 }

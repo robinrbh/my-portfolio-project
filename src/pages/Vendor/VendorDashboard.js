@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Card, Col, Row, Table } from "react-bootstrap"
+import { Card, Col, Row, Table, Button } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useHistory, useParams } from "react-router-dom"
 import UploadLogoForm from "../../components/UploadLogoForm/UploadLogoForm"
@@ -8,26 +8,29 @@ import { selectCars } from "../../store/cars/selectors"
 import { fetchRacers } from "../../store/racer/actions"
 import { selectLogo, selectVendorToken } from "../../store/vendor/selectors"
 import { selectVendor } from "../../store/vendorsDetails/selectors"
+import AddNewCarForm from "../../components/AddNewCarForm"
 
 export default function Vendor() {
+	const [editLogoMode, setEditLogoMode] = useState(false)
+	const [addMode, setAddMode] = useState(false)
+
 	const dispatch = useDispatch()
 	const vendor = useSelector(selectVendor)
 	const cars = useSelector(selectCars)
-	const id = vendor.id
+	const token = useSelector(selectVendorToken)
+	const logo = useSelector(selectLogo)
+	const history = useHistory()
+	const { id } = vendor
+	console.log(cars)
 
-	const [editMode, setEditMode] = useState(false)
+	const displayEditLink = editLogoMode === false
+	const displayAddNewCarLink = addMode === false
 
 	const bookings = !vendor.cars
 		? null
 		: vendor.cars.flatMap((car) => {
 				return car.bookings
 		  })
-
-	const token = useSelector(selectVendorToken)
-	const history = useHistory()
-	const logo = useSelector(selectLogo)
-
-	const displayEditLink = editMode === false
 
 	useEffect(() => {
 		if (!token) {
@@ -95,11 +98,11 @@ export default function Vendor() {
 						</Card.Body>
 						<Card.Body>
 							{displayEditLink ? (
-								<a href="#" onClick={() => setEditMode(true)}>
+								<a href="#" onClick={() => setEditLogoMode(true)}>
 									Change your logo
 								</a>
 							) : null}
-							{editMode ? (
+							{editLogoMode ? (
 								<div>
 									<UploadLogoForm />
 								</div>
@@ -123,6 +126,20 @@ export default function Vendor() {
 												</div>
 											)
 								  })}
+
+							{displayAddNewCarLink ? (
+								<Button
+									style={{
+										borderTop: "1px solid rgba(0,0,0,.125)",
+										paddingTop: "10px",
+									}}
+									href="#"
+									onClick={() => setAddMode(true)}
+								>
+									Add a new car
+								</Button>
+							) : null}
+							{addMode ? <AddNewCarForm /> : null}
 						</Card.Body>
 					</Card>
 				</Col>

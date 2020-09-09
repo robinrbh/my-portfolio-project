@@ -12,6 +12,10 @@ body {
 	padding: 20px;
 }
 
+h1 {
+	font-weight: 200 !important;
+}
+
 ul {
 	padding-top: 10px;
 }
