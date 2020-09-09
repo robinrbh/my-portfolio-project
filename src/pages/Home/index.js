@@ -4,11 +4,13 @@ import { useDispatch, useSelector } from "react-redux"
 import Car from "../../components/Car"
 import { fetchCars } from "../../store/cars/actions"
 import { selectCars } from "../../store/cars/selectors"
+import Loading from "../../components/Loading"
 
 export default function Cars() {
 	const dispatch = useDispatch()
 	const cars = useSelector(selectCars)
 
+	console.log("cars", cars)
 	useEffect(() => {
 		dispatch(fetchCars())
 	}, [dispatch])
@@ -21,28 +23,32 @@ export default function Cars() {
 					"Unfortunately there are no cars available at this time."
 				) : (
 					<CardDeck style={{ display: "block" }}>
-						{cars.map((car, i) => {
-							return (
-								<Card
-									style={{
-										display: "inline-block",
-										width: "500px",
-										marginBottom: "20px",
-									}}
-									key={i}
-								>
-									<Car
-										key={car.id}
-										id={car.id}
-										brand={car.brand}
-										model={car.model}
-										gearbox={car.gearbox}
-										bhp={car.bhp}
-										imageUrl={car.imageUrl}
-									/>
-								</Card>
-							)
-						})}
+						{!cars ? (
+							<Loading />
+						) : (
+							cars.map((car, i) => {
+								return (
+									<Card
+										style={{
+											display: "inline-block",
+											width: "500px",
+											marginBottom: "20px",
+										}}
+										key={i}
+									>
+										<Car
+											key={car.id}
+											id={car.id}
+											brand={car.brand}
+											model={car.model}
+											gearbox={car.gearbox}
+											bhp={car.bhp}
+											imageUrl={car.imageUrl}
+										/>
+									</Card>
+								)
+							})
+						)}
 					</CardDeck>
 				)}
 			</Container>

@@ -83,7 +83,20 @@ export default function VendorDetails() {
 								)
 						  })}
 				</Row>
-				<Row>{token ? <AddReview /> : null}</Row>
+				<Row>
+					{token ? (
+						<AddReview />
+					) : (
+						<p
+							style={{
+								fontStyle: "italic",
+								padding: "10px",
+							}}
+						>
+							You have to be logged in as a Racer to add a review.
+						</p>
+					)}
+				</Row>
 			</Container>
 		</>
 	)

@@ -23,9 +23,12 @@ export const postBookingSuccess = (bookings) => ({
 
 export const fetchCars = () => {
 	return async (dispatch, getState) => {
+		dispatch(appLoading())
+
 		const response = await Axios.get(`${apiUrl}/cars`)
 
 		dispatch(fetchCarsSuccess(response.data))
+		dispatch(appDoneLoading())
 	}
 }
 
