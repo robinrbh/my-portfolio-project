@@ -85,7 +85,6 @@ export const addNewCar = (
 		dispatch(appLoading())
 
 		const { token } = selectVendor(getState())
-		// const id = getState().carDetails.id
 
 		const response = await Axios.post(
 			`${apiUrl}/cars`,
@@ -108,7 +107,7 @@ export const addNewCar = (
 			showMessageWithTimeout(
 				"success",
 				false,
-				"You successfully made a booking!",
+				"You successfully added a new car!",
 				3000
 			)
 		)

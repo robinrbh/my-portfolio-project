@@ -11,26 +11,26 @@ import { selectVendor } from "../../store/vendorsDetails/selectors"
 import AddNewCarForm from "../../components/AddNewCarForm"
 
 export default function Vendor() {
+	const [editLogoMode, setEditLogoMode] = useState(false)
+	const [addMode, setAddMode] = useState(false)
+
 	const dispatch = useDispatch()
 	const vendor = useSelector(selectVendor)
 	const cars = useSelector(selectCars)
-	const id = vendor.id
+	const token = useSelector(selectVendorToken)
+	const logo = useSelector(selectLogo)
+	const history = useHistory()
+	const { id } = vendor
+	console.log(cars)
 
-	const [editLogoMode, setEditLogoMode] = useState(false)
-	const [addMode, setAddMode] = useState(false)
+	const displayEditLink = editLogoMode === false
+	const displayAddNewCarLink = addMode === false
 
 	const bookings = !vendor.cars
 		? null
 		: vendor.cars.flatMap((car) => {
 				return car.bookings
 		  })
-
-	const token = useSelector(selectVendorToken)
-	const history = useHistory()
-	const logo = useSelector(selectLogo)
-
-	const displayEditLink = editLogoMode === false
-	const displayAddNewCarLink = addMode === false
 
 	useEffect(() => {
 		if (!token) {
@@ -126,6 +126,20 @@ export default function Vendor() {
 												</div>
 											)
 								  })}
+
+							{displayAddNewCarLink ? (
+								<Button
+									style={{
+										borderTop: "1px solid rgba(0,0,0,.125)",
+										paddingTop: "10px",
+									}}
+									href="#"
+									onClick={() => setAddMode(true)}
+								>
+									Add a new car
+								</Button>
+							) : null}
+							{addMode ? <AddNewCarForm /> : null}
 						</Card.Body>
 					</Card>
 				</Col>

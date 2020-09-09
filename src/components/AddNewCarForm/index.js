@@ -23,6 +23,7 @@ export default function AddNewCarForm() {
 	return (
 		<div>
 			<Form className="mt-5">
+				<h3>Add new car</h3>
 				<Form.Group controlId="formBasicBrand">
 					<Form.Label>Brand</Form.Label>
 					<Form.Control
