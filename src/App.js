@@ -59,7 +59,14 @@ function App() {
 					<Route path="/signup" component={Signup} />
 				</Switch>
 			</div>
-			<div className="footer">
+			<div
+				className="footer"
+				style={{
+					width: "100%",
+					borderTop: "1px solid #c9c9c9",
+					padding: "10px",
+				}}
+			>
 				<p>
 					Made with{" "}
 					<span role="img" aria-label="emoji">

@@ -24,6 +24,14 @@ p {
 	margin-bottom: 40px;
 }
 
+.card-title {
+	margin-bottom: 0;
+}
+
+.card-title .row {
+	margin-bottom: 0;
+}
+
 .card {
 	margin-bottom: 20px;
 }
@@ -32,12 +40,6 @@ p {
 	width: 100%;
 	height: 280px;
 	object-fit: cover;
-}
-
-.footer {
-	width: "100%";
-	border-top: "1px solid #c9c9c9";
-	padding: "10px";
 }
 
 .footer p {

@@ -4,7 +4,6 @@ export const APP_LOADING = "APP_LOADING"
 export const APP_DONE_LOADING = "APP_DONE_LOADING"
 export const SET_MESSAGE = "SET_MESSAGE"
 export const CLEAR_MESSAGE = "CLEAR_MESSAGE"
-export const TOGGLE_DARK_MODE = "TOGGLE_DARK_MODE"
 
 export const appLoading = () => ({ type: APP_LOADING })
 export const appDoneLoading = () => ({ type: APP_DONE_LOADING })
@@ -35,10 +34,3 @@ export const showMessageWithTimeout = (
 		setTimeout(() => dispatch(clearMessage()), timeout)
 	}
 }
-
-// export const toggleDarkMode = () => {
-// 	const action = {
-// 		type: TOGGLE_DARK_MODE,
-// 	}
-// 	dispatch(action)
-// }

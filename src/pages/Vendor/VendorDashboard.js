@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Card, Col, Row, Table } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
-import { Link, useHistory } from "react-router-dom"
+import { Link, useHistory, useParams } from "react-router-dom"
 import UploadLogoForm from "../../components/UploadLogoForm/UploadLogoForm"
 import { fetchCars } from "../../store/cars/actions"
 import { selectCars } from "../../store/cars/selectors"
@@ -13,6 +13,7 @@ export default function Vendor() {
 	const dispatch = useDispatch()
 	const vendor = useSelector(selectVendor)
 	const cars = useSelector(selectCars)
+	const id = vendor.id
 
 	const [editMode, setEditMode] = useState(false)
 
@@ -44,7 +45,10 @@ export default function Vendor() {
 					<Card>
 						<Card.Body>
 							<h3>Description</h3>
-							{vendor.description}
+							<p>{vendor.description}</p>
+							<p>
+								<Link to={`/vendors/${id}`}>Visit your public profile</Link>
+							</p>
 						</Card.Body>
 					</Card>
 
