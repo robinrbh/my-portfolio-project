@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Card, Col, Row, Table } from "react-bootstrap"
+import { Card, Col, Row, Table, Button } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useHistory, useParams } from "react-router-dom"
 import UploadLogoForm from "../../components/UploadLogoForm/UploadLogoForm"
@@ -8,6 +8,7 @@ import { selectCars } from "../../store/cars/selectors"
 import { fetchRacers } from "../../store/racer/actions"
 import { selectLogo, selectVendorToken } from "../../store/vendor/selectors"
 import { selectVendor } from "../../store/vendorsDetails/selectors"
+import AddNewCarForm from "../../components/AddNewCarForm"
 
 export default function Vendor() {
 	const dispatch = useDispatch()
@@ -15,7 +16,8 @@ export default function Vendor() {
 	const cars = useSelector(selectCars)
 	const id = vendor.id
 
-	const [editMode, setEditMode] = useState(false)
+	const [editLogoMode, setEditLogoMode] = useState(false)
+	const [addMode, setAddMode] = useState(false)
 
 	const bookings = !vendor.cars
 		? null
@@ -27,7 +29,8 @@ export default function Vendor() {
 	const history = useHistory()
 	const logo = useSelector(selectLogo)
 
-	const displayEditLink = editMode === false
+	const displayEditLink = editLogoMode === false
+	const displayAddNewCarLink = addMode === false
 
 	useEffect(() => {
 		if (!token) {
@@ -95,11 +98,11 @@ export default function Vendor() {
 						</Card.Body>
 						<Card.Body>
 							{displayEditLink ? (
-								<a href="#" onClick={() => setEditMode(true)}>
+								<a href="#" onClick={() => setEditLogoMode(true)}>
 									Change your logo
 								</a>
 							) : null}
-							{editMode ? (
+							{editLogoMode ? (
 								<div>
 									<UploadLogoForm />
 								</div>

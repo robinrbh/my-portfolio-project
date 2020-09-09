@@ -2,6 +2,7 @@ import {
 	FETCH_CARS_SUCCESS,
 	FETCH_VENDORS_SUCCESS,
 	POST_BOOKING_SUCCESS,
+	ADD_NEW_CAR_SUCCESS,
 } from "./actions"
 
 const initialState = []
@@ -15,6 +16,9 @@ export default (state = initialState, action) => {
 			return action.payload
 
 		case POST_BOOKING_SUCCESS:
+			return action.payload
+
+		case ADD_NEW_CAR_SUCCESS:
 			return action.payload
 
 		default:
