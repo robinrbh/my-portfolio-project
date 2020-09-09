@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from "react"
-import { useHistory, Link } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
-
-import { selectRacerId } from "../../store/racer/selectors"
-import { selectVendorId } from "../../store/vendor/selectors"
-import { loginRacer } from "../../store/racer/actions"
-import { loginVendor } from "../../store/vendor/actions"
-
-import Form from "react-bootstrap/Form"
-import Container from "react-bootstrap/Container"
-import Button from "react-bootstrap/Button"
+import React, { useEffect, useState } from "react"
 import { Col } from "react-bootstrap"
+import Button from "react-bootstrap/Button"
+import Container from "react-bootstrap/Container"
+import Form from "react-bootstrap/Form"
+import { useDispatch, useSelector } from "react-redux"
+import { Link, useHistory } from "react-router-dom"
+import { loginRacer } from "../../store/racer/actions"
+import { selectRacerId } from "../../store/racer/selectors"
+import { loginVendor } from "../../store/vendor/actions"
+import { selectVendorId } from "../../store/vendor/selectors"
 
 export default function SignUp() {
 	const history = useHistory()

@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react"
 import { Card, Col, Row, Table } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useHistory } from "react-router-dom"
+import UploadLogoForm from "../../components/UploadLogoForm/UploadLogoForm"
 import { fetchCars } from "../../store/cars/actions"
 import { selectCars } from "../../store/cars/selectors"
 import { fetchRacers } from "../../store/racer/actions"
-import { selectVendorToken, selectLogo } from "../../store/vendor/selectors"
+import { selectLogo, selectVendorToken } from "../../store/vendor/selectors"
 import { selectVendor } from "../../store/vendorsDetails/selectors"
-import UploadLogoForm from "../../components/UploadLogoForm/UploadLogoForm"
 
 export default function Vendor() {
 	const dispatch = useDispatch()

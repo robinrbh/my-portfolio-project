@@ -4,22 +4,17 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link, useParams } from "react-router-dom"
 import { fetchCarById } from "../../store/carDetails/actions"
 import { selectCarDetails } from "../../store/carDetails/selectors"
+import { selectRacerToken } from "../../store/racer/selectors"
 import { fetchVendors } from "../../store/vendorsDetails/actions"
 import { selectVendors } from "../../store/vendorsDetails/selectors"
-import { selectRacerToken } from "../../store/racer/selectors"
-// import { selectToken, selectUser } from "../../store/user/selectors"
 
 export default function CarDetails(props) {
-	const { id } = useParams()
 	const dispatch = useDispatch()
+	const { id } = useParams()
 	const car = useSelector(selectCarDetails)
-
-	console.log("car", car)
-
-	const tracks = car.tracks
-
-	const vendors = useSelector(selectVendors)
 	const token = useSelector(selectRacerToken)
+	const vendors = useSelector(selectVendors)
+	const tracks = car.tracks
 
 	useEffect(() => {
 		dispatch(fetchCarById(id))
@@ -46,7 +41,19 @@ export default function CarDetails(props) {
 										return <li>{track.name}</li>
 								  })}
 						</ul>
-						{!token ? null : (
+						{!token ? (
+							<p
+								style={{
+									fontStyle: "italic",
+									padding: "10px",
+									border: "1px solid rgba(0,0,0,.125)",
+									borderRadius: "5px",
+								}}
+							>
+								You need to login or register an account as a Racer to book this
+								car.
+							</p>
+						) : (
 							<Link to={`/cars/${car.id}/book`}>
 								<Button variant="success">Book this car!</Button>
 							</Link>

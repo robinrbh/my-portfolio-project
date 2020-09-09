@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react"
-import { Col, Container, Form, Button } from "react-bootstrap"
+import { Button, Col, Container, Form } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { fetchCarById } from "../../store/carDetails/actions"
 import { selectCarDetails } from "../../store/carDetails/selectors"
-import { selectRacer, selectRacerToken } from "../../store/racer/selectors"
 import { bookCar } from "../../store/cars/actions"
+import { selectRacer, selectRacerToken } from "../../store/racer/selectors"
 
 export default function BookACar() {
 	const dispatch = useDispatch()

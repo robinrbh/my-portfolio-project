@@ -118,14 +118,11 @@ export const createVendor = (isRacer, name, email, password) => {
 export const uploadLogo = (newLogo) => {
 	return async (dispatch, getState) => {
 		dispatch(appLoading())
-
-		// console.log("getState", getState())
 		const id = getState().vendor.id
 
 		const response = await axios.patch(`${apiUrl}/vendors/${id}`, {
 			newLogo,
 		})
-		console.log("response new logo", response.data.updatedLogo.imageUrl)
 
 		dispatch(uploadLogoSuccess(response.data.updatedLogo.imageUrl))
 		dispatch(

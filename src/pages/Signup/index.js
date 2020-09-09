@@ -5,7 +5,6 @@ import Container from "react-bootstrap/Container"
 import Form from "react-bootstrap/Form"
 import { useDispatch } from "react-redux"
 import { Link, useHistory } from "react-router-dom"
-
 import { createRacer } from "../../store/racer/actions"
 import { createVendor } from "../../store/vendor/actions"
 

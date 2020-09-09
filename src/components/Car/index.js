@@ -1,10 +1,9 @@
 import React from "react"
-import { Card, Button, Row, Col } from "react-bootstrap"
+import { Button, Card, Col, Row } from "react-bootstrap"
 import { Link } from "react-router-dom"
 
 export default function Car(props) {
 	return (
-		// <CardDeck style={{ display: "block" }}>
 		<>
 			<Card.Img
 				variant="top"
@@ -32,6 +31,5 @@ export default function Car(props) {
 				</Card.Title>
 			</Card.Body>
 		</>
-		// </CardDeck>
 	)
 }

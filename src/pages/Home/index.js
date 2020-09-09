@@ -1,10 +1,9 @@
 import React, { useEffect } from "react"
-import { useDispatch } from "react-redux"
-import { useSelector } from "react-redux"
-import { Container, CardDeck, Card } from "react-bootstrap"
+import { Card, CardDeck, Container } from "react-bootstrap"
+import { useDispatch, useSelector } from "react-redux"
+import Car from "../../components/Car"
 import { fetchCars } from "../../store/cars/actions"
 import { selectCars } from "../../store/cars/selectors"
-import Car from "../../components/Car"
 
 export default function Cars() {
 	const dispatch = useDispatch()

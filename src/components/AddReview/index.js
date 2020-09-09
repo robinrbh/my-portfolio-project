@@ -20,7 +20,6 @@ export default function AddReview() {
 		<Container>
 			<Form>
 				<h4 className="mt-5 mb-5">Post a review</h4>
-
 				<Form.Group controlId="formBasicComment">
 					<Form.Label>Comment</Form.Label>
 					<Form.Control
