@@ -59,7 +59,7 @@ export default function SignUp() {
 						required
 					/>
 				</Form.Group>
-	
+
 				<Form.Group controlId="FormCheck">
 					<Form.Label>Email address</Form.Label>
 					<Form.Control
@@ -84,7 +84,7 @@ export default function SignUp() {
 					/>
 				</Form.Group>
 				<Form.Group className="mt-5">
-					<Button variant="primary" type="submit" onClick={() => createUser()}>
+					<Button variant="dark" type="submit" onClick={() => createUser()}>
 						Sign up
 					</Button>
 				</Form.Group>

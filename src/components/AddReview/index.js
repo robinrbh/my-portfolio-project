@@ -42,7 +42,7 @@ export default function AddReview() {
 					/>
 				</Form.Group>
 				<Form.Group className="mt-5">
-					<Button variant="primary" type="submit" onClick={submitForm}>
+					<Button variant="dark" type="submit" onClick={submitForm}>
 						Post comment
 					</Button>
 				</Form.Group>

@@ -25,7 +25,7 @@ export default function Car(props) {
 						</Col>
 						<Col sm={4} style={{ textAlign: "right" }}>
 							<Link to={`/cars/${props.id}`}>
-								<Button>See details</Button>
+								<Button variant="info">See details</Button>
 							</Link>
 						</Col>
 					</Row>

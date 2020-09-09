@@ -19,14 +19,11 @@ export default function BookACar() {
 		dispatch(fetchCarById(id))
 	}, [dispatch, id])
 
-	// console.log("racer", racer)
-
 	function submitForm(event) {
 		event.preventDefault()
 
 		if (location !== null && location !== "Choose...") {
 			dispatch(bookCar(location))
-			console.log(location)
 		}
 	}
 
@@ -62,7 +59,7 @@ export default function BookACar() {
 							</Form.Control>
 						</Form.Group>
 						<Form.Group className="mt-5">
-							<Button variant="primary" type="submit" onClick={submitForm}>
+							<Button variant="success" type="submit" onClick={submitForm}>
 								Book this car!
 							</Button>
 						</Form.Group>

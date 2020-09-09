@@ -91,7 +91,7 @@ export default function Vendor() {
 						</Card.Body>
 						<Card.Body>
 							{displayEditLink ? (
-								<Link onClick={() => setEditMode(true)}>change your logo</Link>
+								<Link onClick={() => setEditMode(true)}>Change your logo</Link>
 							) : null}
 							{editMode ? (
 								<div>

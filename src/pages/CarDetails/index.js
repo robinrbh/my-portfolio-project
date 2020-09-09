@@ -35,7 +35,7 @@ export default function CarDetails(props) {
 						<p>{car.description}</p>
 						{!token ? null : (
 							<Link to={`/cars/${car.id}/book`}>
-								<Button>Book this car!</Button>
+								<Button variant="success">Book this car!</Button>
 							</Link>
 						)}
 					</Col>
@@ -58,13 +58,14 @@ export default function CarDetails(props) {
 														/>
 														<p>Name: {vendor.name}</p>
 														<Link to={`/vendors/${vendor.id}`}>
-															<Button>Visit Vendors page</Button>
+															<Button variant="secondary">
+																Visit Vendors page
+															</Button>
 														</Link>
 													</div>
 												)
 									  })}
 							</Card.Body>
-							<Card.Footer>Rating</Card.Footer>
 						</Card>
 					</Col>
 				</Row>

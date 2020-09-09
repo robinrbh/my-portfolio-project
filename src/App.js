@@ -15,7 +15,7 @@ import VendorDetails from "./pages/VendorDetails"
 import { selectAppLoading } from "./store/appState/selectors"
 import { selectRacerToken } from "./store/racer/selectors"
 import { selectVendorToken } from "./store/vendor/selectors"
-import { Container, Row, Col } from "react-bootstrap"
+import "./App.css"
 
 function App() {
 	const isLoading = useSelector(selectAppLoading)
@@ -29,8 +29,18 @@ function App() {
 
 	return (
 		<div>
-			<div style={{ width: "100%", borderBottom: "1px solid #c9c9c9" }}>
-				<h1 style={{ paddingLeft: "20px" }}>Racing Valley</h1>
+			<div
+				style={{
+					width: "100%",
+					borderBottom: "1px solid #c9c9c9",
+					padding: "20px",
+				}}
+			>
+				<img
+					src="https://i.ibb.co/M73D2vJ/0d900108-fc44-476d-a492-a9533be032a9-200x200-1.png"
+					alt="0d900108-fc44-476d-a492-a9533be032a9-200x200-1"
+					border="0"
+				/>
 			</div>
 
 			<Navigation />
