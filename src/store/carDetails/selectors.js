@@ -1,0 +1,1 @@
+export const selectCarDetails = state => state.carDetails;
