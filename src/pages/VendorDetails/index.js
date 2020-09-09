@@ -1,15 +1,15 @@
 import React, { useEffect } from "react"
+import { Card, CardDeck, Col, Container, Row } from "react-bootstrap"
+import { useDispatch, useSelector } from "react-redux"
+import { useParams } from "react-router-dom"
+import AddReview from "../../components/AddReview"
+import Car from "../../components/Car"
+import { selectRacerToken } from "../../store/racer/selectors"
 import { fetchVendorById } from "../../store/vendorsDetails/actions"
 import {
-	selectVendors,
 	selectReview,
+	selectVendors,
 } from "../../store/vendorsDetails/selectors"
-import { useParams } from "react-router-dom"
-import { useSelector, useDispatch } from "react-redux"
-import { Container, Row, Col, CardDeck, Card } from "react-bootstrap"
-import Car from "../../components/Car"
-import AddReview from "../../components/AddReview"
-import { selectRacerToken } from "../../store/racer/selectors"
 
 export default function VendorDetails() {
 	const { id } = useParams()

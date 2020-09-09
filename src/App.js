@@ -70,7 +70,7 @@ function App() {
 					<span role="img" aria-label="emoji">
 						♥
 					</span>{" "}
-					by Robin
+					by <a href="https://github.com/robinrbh">Robin</a>
 				</p>
 			</div>
 		</div>
