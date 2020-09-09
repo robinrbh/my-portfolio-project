@@ -5,11 +5,7 @@ import { Link } from "react-router-dom"
 export default function Car(props) {
 	return (
 		<>
-			<Card.Img
-				variant="top"
-				src={props.imageUrl}
-				style={{ width: "100%", height: "280px", objectFit: "cover" }}
-			/>
+			<Card.Img variant="top" src={props.imageUrl} />
 
 			<Card.Body>
 				<Card.Title>

@@ -39,9 +39,9 @@ export default function Vendor() {
 	return (
 		<>
 			<h1>Welcome, {vendor.name}</h1>
-			<Row style={{ marginBottom: "20px" }}>
+			<Row>
 				<Col sm={10}>
-					<Card style={{ marginBottom: "20px" }}>
+					<Card>
 						<Card.Body>
 							<h3>Description</h3>
 							{vendor.description}
@@ -85,7 +85,7 @@ export default function Vendor() {
 					</Card>
 				</Col>
 				<Col sm={2}>
-					<Card style={{ marginBottom: "20px" }}>
+					<Card>
 						<Card.Body>
 							<img alt="logo" width="150px" src={logo} />
 						</Card.Body>

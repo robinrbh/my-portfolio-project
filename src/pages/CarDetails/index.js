@@ -29,7 +29,7 @@ export default function CarDetails(props) {
 						<img src={car.imageUrl} alt="car" style={{ width: "400px" }} />
 					</Col>
 					<Col>
-						<h3 style={{ textShadow: "1px 1px #fff" }}>
+						<h3>
 							{car.brand} {car.model}
 						</h3>
 						<p>{car.description}</p>{" "}

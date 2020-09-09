@@ -26,7 +26,7 @@ export default function VendorDetails() {
 	return (
 		<>
 			<Container>
-				<Row style={{ marginBottom: "40px" }}>
+				<Row>
 					<Col sm={2}>
 						<img alt="logo" src={vendor.imageUrl} style={{ width: "150px" }} />
 					</Col>
@@ -35,7 +35,7 @@ export default function VendorDetails() {
 						<p>{vendor.description}</p>
 					</Col>
 				</Row>
-				<Row style={{ marginBottom: "20px" }}>
+				<Row>
 					<h3>Cars for rent @ {vendor.name}</h3>
 				</Row>
 				<Row>

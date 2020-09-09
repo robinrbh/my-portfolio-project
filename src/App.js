@@ -30,6 +30,7 @@ function App() {
 	return (
 		<div>
 			<div
+				// className="logo"
 				style={{
 					width: "100%",
 					borderBottom: "1px solid #c9c9c9",
@@ -46,7 +47,7 @@ function App() {
 			<Navigation />
 
 			<MessageBox />
-			<div style={{ padding: "20px" }}>
+			<div className="main">
 				{isLoading ? <Loading /> : null}
 				<Switch>
 					<Route exact path="/" component={Home} />
@@ -58,14 +59,8 @@ function App() {
 					<Route path="/signup" component={Signup} />
 				</Switch>
 			</div>
-			<div
-				style={{
-					width: "100%",
-					borderTop: "1px solid #c9c9c9",
-					padding: "10px",
-				}}
-			>
-				<p style={{ textAlign: "center" }}>
+			<div className="footer">
+				<p>
 					Made with{" "}
 					<span role="img" aria-label="emoji">
 						♥
