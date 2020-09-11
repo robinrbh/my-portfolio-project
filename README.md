@@ -16,7 +16,7 @@
 
 ## App demo
 
-![App demo]
+_Soon_
 
 ## Used technologies and concepts
 
