@@ -10,7 +10,6 @@ export default function Cars() {
 	const dispatch = useDispatch()
 	const cars = useSelector(selectCars)
 
-	console.log("cars", cars)
 	useEffect(() => {
 		dispatch(fetchCars())
 	}, [dispatch])
