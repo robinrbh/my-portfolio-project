@@ -85,38 +85,33 @@ export const addNewCar = (
 		dispatch(appLoading())
 
 		const { token } = selectVendor(getState())
-		try {
-			const response = await Axios.post(
-				`${apiUrl}/cars`,
-				{
-					brand,
-					model,
-					bhp,
-					description,
-					gearbox,
-					imageUrl,
-				},
-				{
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				}
-			)
 
-			dispatch(
-				showMessageWithTimeout(
-					"success",
-					false,
-					"You successfully added a new car!",
-					3000
-				)
+		const response = await Axios.post(
+			`${apiUrl}/cars`,
+			{
+				brand,
+				model,
+				bhp,
+				description,
+				gearbox,
+				imageUrl,
+			},
+			{
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			}
+		)
+
+		dispatch(
+			showMessageWithTimeout(
+				"success",
+				false,
+				"You successfully added a new car!",
+				3000
 			)
-			dispatch(addNewCarSuccess(response.data))
-			dispatch(appDoneLoading())
-		} catch (error) {
-			console.log(error)
-			dispatch(setMessage("error", true, error.response.data.message))
-		}
+		)
+		dispatch(addNewCarSuccess(response.data))
 		dispatch(appDoneLoading())
 	}
 }
