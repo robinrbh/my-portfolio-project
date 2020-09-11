@@ -115,6 +115,8 @@ export function createRacer(isRacer, name, email, password) {
 				password,
 			})
 
+			console.log("response", response.data)
+
 			dispatch(loginSuccessRacer(response.data))
 			dispatch(showMessageWithTimeout("success", true, response.data.message))
 			dispatch(appDoneLoading())
