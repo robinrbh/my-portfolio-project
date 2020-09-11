@@ -1,6 +1,6 @@
 ## 🏎️ Racing Valley | A platform where you can rent (and rent out) Racecars 🏎️
 
-[Find out here for a working version]
+[Find out here for a working version](https://racing-valley.netlify.app/)
 
 ## Table of contents
 
