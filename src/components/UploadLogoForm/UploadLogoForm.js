@@ -15,7 +15,7 @@ export default function UploadLogoForm() {
 		data.append("upload_preset", "darwin")
 		setLoading(true)
 		const res = await fetch(
-			"http://api.cloudinary.com/v1_1/robinrbh/image/upload",
+			"https://api.cloudinary.com/v1_1/robinrbh/image/upload",
 			{
 				method: "POST",
 				body: data,
