@@ -4,7 +4,6 @@
 
 ## Table of contents
 
-- [App demo](#App-demo)
 - [Used technologies and concepts](#used-technologies-and-concepts)
 - [Goals for this project](#goals-for-this-project)
 - [User stories](#user-stories)
@@ -13,10 +12,6 @@
 - [Datamodel](#datamodel)
 - [Git version control](#git-version-control)
 - [Backend server repo](#backend-server-repo)
-
-## App demo
-
-_Soon_
 
 ## Used technologies and concepts
 
